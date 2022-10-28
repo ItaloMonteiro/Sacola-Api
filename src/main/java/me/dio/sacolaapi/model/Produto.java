@@ -19,6 +19,7 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String nome;
     private double valorUnitario;
     @Builder.Default
     private boolean disponivel = true;
