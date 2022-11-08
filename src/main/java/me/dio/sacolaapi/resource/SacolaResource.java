@@ -2,11 +2,10 @@ package me.dio.sacolaapi.resource;
 
 import lombok.RequiredArgsConstructor;
 import me.dio.sacolaapi.model.Item;
+import me.dio.sacolaapi.model.Sacola;
 import me.dio.sacolaapi.resource.dto.ItemDto;
 import me.dio.sacolaapi.service.SacolaService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ifood-devweek/sacolas")
@@ -15,7 +14,12 @@ public class SacolaResource {
     private final SacolaService sacolaService;
 
     @PostMapping
-    public Item incluirItemNaSacola(ItemDto itemDto){
+    public Item incluirItemNaSacola(@RequestBody ItemDto itemDto){
         return sacolaService.incluirItemNaSacola(itemDto);
+    }
+
+    @GetMapping("/{id}")
+    public Sacola verSacola(@PathVariable("id") Long id){
+        return sacolaService.verSacola(id);
     }
 }
