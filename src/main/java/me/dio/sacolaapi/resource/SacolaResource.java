@@ -22,4 +22,9 @@ public class SacolaResource {
     public Sacola verSacola(@PathVariable("id") Long id){
         return sacolaService.verSacola(id);
     }
+
+    @PatchMapping("/fecharSacola/{sacolaId}")
+    public Sacola fecharSacola(@PathVariable("sacolaId") Long sacolaId, @RequestParam("formaPagamento") int formaPagamento){
+        return sacolaService.fecharSacola(sacolaId, formaPagamento);
+    }
 }
